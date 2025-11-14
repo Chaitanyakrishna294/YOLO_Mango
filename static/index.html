@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mango Disease Detector</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+    <header class="logo-header">
+        <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+            focusable="false">
+            <!-- Mango fruit with gradient -->
+            <defs>
+                <radialGradient id="mango-fill" cx="60%" cy="40%" r="50%">
+                    <stop offset="0%" stop-color="#FFD166" />
+                    <stop offset="70%" stop-color="#F4A259" />
+                    <stop offset="100%" stop-color="#E76F51" />
+                </radialGradient>
+                <linearGradient id="leaf-gradient" x1="20" y1="40" x2="70" y2="10" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#43AA8B" />
+                    <stop offset="100%" stop-color="#2D6A4F" />
+                </linearGradient>
+            </defs>
+            <!-- Shadow -->
+            <ellipse cx="62" cy="110" rx="31" ry="7" fill="#E9C46A" fill-opacity="0.25" />
+            <!-- Mango Body -->
+            <ellipse cx="64" cy="64" rx="38" ry="50" fill="url(#mango-fill)" stroke="#A35826" stroke-width="2.5" />
+            <!-- Mango highlight -->
+            <ellipse cx="52" cy="54" rx="10" ry="18" fill="white" fill-opacity="0.16" />
+            <!-- Stem -->
+            <rect x="65" y="18" width="7.5" height="18" rx="3" fill="#935116" transform="rotate(-12 65 18)" />
+            <!-- Leaf -->
+            <path d="M72 26 C90 5, 110 40, 85 50 Q74 36, 72 26 Z" fill="url(#leaf-gradient)" stroke="#126353"
+                stroke-width="2" />
+            <!-- Vein on leaf -->
+            <path d="M78 28 Q91 32, 85 50" stroke="#ffffff" stroke-width="1.2" fill="none" opacity="0.7" />
+        </svg>
+        <h1 class="logo-title">MangoCare</h1>
+    </header>
+
+    <main class="container">
+        <header>
+            <h1>Detect. Diagnose. Defend Your Mango Crop</h1>
+        </header>
+
+        <section class="upload-section">
+            <label for="imgInput" class="file-label">
+                <input type="file" id="imgInput" accept="image/*" hidden />
+                <span>Select an Image</span>
+            </label>
+            <button id="detectBtn" disabled>Detect Disease</button>
+            <div id="status" class="status" aria-live="polite"></div>
+        </section>
+
+        <section id="workflow" class="workflow" hidden>
+            <div class="step">
+                <div class="img-card">
+                    <img id="step1" class="workflow-img" alt="Original image" />
+                    <div class="spinner" id="spinner1"></div>
+                </div>
+                <p>Original</p>
+            </div>
+            <div class="arrow">&rarr;</div>
+            <div class="step">
+                <div class="img-card">
+                    <img id="step2" class="workflow-img" alt="Detected image" />
+                    <div class="spinner" id="spinner2"></div>
+                </div>
+                <p>Detected</p>
+            </div>
+        </section>
+
+        <section id="diseaseInfo" class="disease-info" hidden>
+            <h2 id="diseaseName"></h2>
+            <p id="description"></p>
+            <p><strong>Cause:</strong> <span id="cause"></span></p>
+            <p><strong>Precautions:</strong> <span id="precautions"></span></p>
+        </section>
+    </main>
+    
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
